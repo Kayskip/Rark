@@ -1,4 +1,5 @@
 {
   "name": "rark",
-  "displayName": "rark"
+  "displayName": "rark",
+  "expo": { "sdkVersion": "28.0.3" } 
 }
