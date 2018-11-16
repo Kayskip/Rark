@@ -1,49 +1,26 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
+import 'babel-polyfill'
+import React, { Component } from 'react'
+import { Platform, StyleSheet, Text, View } from 'react-native'
+import { createStackNavigator, createSwitchNavigator, createBottomTabNavigator} from 'react-navigation'
+import { createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs'
+import { AuthStack, AppTab } from './src/lib/Navigators'
+import firebase from 'firebase/app'
 
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+firebase.initializeApp({
+    apiKey: "AIzaSyDkR9xDAYJxdDHdN1mKuMqbee9DL0V8klM",
+    authDomain: "rark-83f8f.firebaseapp.com",
+    databaseURL: "https://rark-83f8f.firebaseio.com",
+    projectId: "rark-83f8f",
+    storageBucket: "rark-83f8f.appspot.com",
+    messagingSenderId: "481654472265"
+})
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
-
-type Props = {};
-export default class App extends Component<Props> {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-      </View>
-    );
+export default createSwitchNavigator(
+  {
+    Auth: AuthStack,
+    App: AppTab
+  },
+  {
+    initialRouteName: 'Auth'
   }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+)
