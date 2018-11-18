@@ -1,80 +1,17 @@
 // import liraries
 import React, { Component } from 'react'
-import {View, Text, StyleSheet, Button, TouchableOpacity, ScrollView, RefreshControl } from 'react-native'
+import { View, Text, StyleSheet, Button, TouchableOpacity, ScrollView, RefreshControl } from 'react-native'
 import firebase from 'react-native-firebase'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
 class HomeScreen extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
-    this.state = {
-      accordion_chores: [],
-      refreshing: false
-    }
-  }
+    this.state = {}}
 
-  handleOnNavigateBack = () => {
-    this.refreshChores()
-  }
-
-  componentWillMount () {
-    this.refreshChores()
-  }
-
-  refreshChores () {
-    this.setState({ refreshing: true })
-    firebase
-      .firestore()
-      .collection('flats')
-      .doc('flat1')
-      .collection('chores')
-      .get()
-      .then(snapshot => {
-        // reset the chores
-        this.setState({ accordion_chores: [] })
-
-        // pull all the chores from firestore
-        chores = []
-        snapshot.forEach(chore => {
-          chores.push({
-            title: chore.get('choreTitle'),
-            content: chore.get('choreDescription')
-          })
-        })
-
-        // set state variable to these chores
-        this.setState({ accordion_chores: chores })
-        this.setState(() => {
-          return { refreshing: false }
-        })
-      })
-  }
-
-  render () {
+  render() {
     return (
-      <ScrollView
-        style={styles.container}
-        refreshControl={
-          <RefreshControl
-            refreshing={this.state.refreshing}
-            onRefresh={() => this.refreshChores()}
-          />
-        }
-      >
-        <ChoresAccordionView sections={this.state.accordion_chores} />
-        <View style={styles.addChoreCont}>
-          <Icon
-            raised
-            name='add-circle'
-            size={40}
-            type='font-awesome'
-            color='#ffa18a'
-            onPress={() =>
-              this.props.navigation.navigate('Flat', {
-                onNavigateBack: this.handleOnNavigateBack
-              })}
-          />
-        </View>
+      <ScrollView>
       </ScrollView>
     )
   }

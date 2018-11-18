@@ -1,17 +1,16 @@
+import {TabNavigator} from 'react-navigation';
 import React, { Component } from 'react'
 import { createStackNavigator } from 'react-navigation'
-import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs'
 import Icon from 'react-native-vector-icons/MaterialIcons'
-
 import HomeScreen from '../screens/app/HomeScreen'
 import FlatScreen from '../screens/app/FlatScreen'
-import SettingsScreen from '../screens/app/SettingsScreen'
 import GetStartedScreen from '../screens/auth/GetStartedScreen'
 import LoginScreen from '../screens/auth/LoginScreen'
 import SignupScreen from '../screens/auth/SignupScreen'
 import NotificationsScreen from '../screens/app/NotificationsScreen'
 import ProfileScreen from '../screens/app/ProfileScreen'
 import hideTabBar from './HideTabBar'
+import { createMaterialTopTabNavigator } from 'react-navigation';
 
 const AuthStack = createStackNavigator({
   GetStarted: GetStartedScreen,
@@ -30,54 +29,56 @@ const FlatStack = createStackNavigator({
 
 FlatStack.navigationOptions = hideTabBar
 
-const SettingsStack = createStackNavigator({
-  SettingsNav: SettingsScreen,
+const ProfileStack = createStackNavigator({
+  ProfileNav: ProfileScreen,
   Notifications: NotificationsScreen,
   Profile: ProfileScreen
 })
 
-SettingsStack.navigationOptions = hideTabBar
+ProfileScreen.navigationOptions = hideTabBar
 
-const AppTab = createMaterialBottomTabNavigator(
+
+const AppTab = createMaterialTopTabNavigator(
   {
+    Profile: {
+      screen: ProfileStack,
+      tabBarOptions: {
+        tabBarIcon: <Icon name='account-circle' size={25} />,
+        tabBarLabel: 'Profile',
+        tabBarColor: '#26c6da',
+        shifting: true
+      },
+    },
     Home: {
       screen: HomeStack,
-      navigationOptions: {
+      tabBarOptions: {
         tabBarIcon: <Icon name='people' size={25} />,
         tabBarLabel: 'Chores',
-        tabBarColor: '#b2ebf2',
+        tabBarColor: 'black',
         shifting: true
       }
     },
     Flat: {
       screen: FlatStack,
-      navigationOptions: {
+            tabBarOptions: {
         tabBarIcon: <Icon name='weekend' size={25} />,
         tabBarLabel: 'Your Flat',
         tabBarColor: '#80deea',
         shifting: true
       }
     },
-    Settings: {
-      screen: SettingsStack,
-      navigationOptions: {
-        tabBarIcon: <Icon name='account-circle' size={25} />,
-        tabBarLabel: 'Settings',
-        tabBarColor: '#26c6da',
-        shifting: true
-      }
-    }
   },
   {
     initialRouteName: 'Home',
     barStyle: { backgroundColor: '#1c313a' }
-  }
-)
+  },
+
+);
 
 export {
   AuthStack,
   HomeStack,
   FlatStack,
-  SettingsStack,
+  ProfileStack,
   AppTab
 }
