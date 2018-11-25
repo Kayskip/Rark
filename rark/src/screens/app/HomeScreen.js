@@ -1,64 +1,144 @@
-// import liraries
-import React, { Component } from 'react'
-import { View, Text, StyleSheet, Button, TouchableOpacity, ScrollView, RefreshControl } from 'react-native'
-import firebase from 'react-native-firebase'
-import Icon from 'react-native-vector-icons/MaterialIcons'
-import Swiper from 'react-native-deck-swiper'
-
-class HomeScreen extends Component {
+'use strict';
+ 
+import React from 'react';
+import {StyleSheet, Text, View, Image, ScrollView} from 'react-native';
+ 
+import SwipeCards from 'react-native-swipe-cards';
+ 
+class Card extends React.Component {
   constructor(props) {
-    super(props)
-    this.state = {}}
+    super(props);
+  }
+ 
+  render() {
+    return (
 
-    render () {
-      return (
-      <View style={styles.container}>
-          <Swiper
-              cards={['DO', 'MORE', 'OF', 'WHAT', 'MAKES', 'YOU', 'HAPPY']}
-              renderCard={(card) => {
-                  return (
-                      <View style={styles.card}>
-                          <Text style={styles.text}>{card}</Text>
-                      </View>
-                  )
-              }}
-              onSwiped={(cardIndex) => {console.log(cardIndex)}}
-              onSwipedAll={() => {console.log('onSwipedAll')}}
-              cardIndex={0}
-              backgroundColor={'#4FD0E9'}
-              stackSize= {3}>
-              <Button
-                  onPress={() => {console.log('oulala')}}
-                  title="Press me">
-                  You can press me
-              </Button>
-          </Swiper>
-      </View>
-      )
+      <ScrollView contentContainerStyle={styles.contentContainer}>
+        <View style={styles.card}>
+          <Image style={styles.thumbnail} source={{uri: this.props.image}} />
+          <Text style={styles.text}>This is card {this.props.name}</Text>
+        </View>
+      </ScrollView>
+
+    )
   }
 }
-
-
+ 
+class NoMoreCards extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+ 
+  render() {
+    return (
+      <View style={styles.noMoreCards}>
+        <Text>No more cards</Text>
+      </View>
+    )
+  }
+}
+ 
+const cards = [
+  {name: '1', image: 'https://media.giphy.com/media/GfXFVHUzjlbOg/giphy.gif'},
+  {name: '2', image: 'https://media.giphy.com/media/irTuv1L1T34TC/giphy.gif'},
+  {name: '3', image: 'https://media.giphy.com/media/LkLL0HJerdXMI/giphy.gif'},
+  {name: '4', image: 'https://media.giphy.com/media/fFBmUMzFL5zRS/giphy.gif'},
+  {name: '5', image: 'https://media.giphy.com/media/oDLDbBgf0dkis/giphy.gif'},
+  {name: '6', image: 'https://media.giphy.com/media/7r4g8V2UkBUcw/giphy.gif'},
+  {name: '7', image: 'https://media.giphy.com/media/K6Q7ZCdLy8pCE/giphy.gif'},
+  {name: '8', image: 'https://media.giphy.com/media/hEwST9KM0UGti/giphy.gif'},
+  {name: '9', image: 'https://media.giphy.com/media/3oEduJbDtIuA2VrtS0/giphy.gif'},
+]
+ 
+const cards2 = [
+  {name: '10', image: 'https://media.giphy.com/media/12b3E4U9aSndxC/giphy.gif'},
+  {name: '11', image: 'https://media4.giphy.com/media/6csVEPEmHWhWg/200.gif'},
+  {name: '12', image: 'https://media4.giphy.com/media/AA69fOAMCPa4o/200.gif'},
+  {name: '13', image: 'https://media.giphy.com/media/OVHFny0I7njuU/giphy.gif'},
+]
+ 
+export default class HomeScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      cards: cards,
+      outOfCards: false
+    }
+  }
+ 
+  handleYup (card) {
+    console.log("yup")
+  }
+ 
+  handleNope (card) {
+    console.log("nope")
+  }
+ 
+  cardRemoved (index) {
+    console.log(`The index is ${index}`);
+ 
+    let CARD_REFRESH_LIMIT = 3
+ 
+    if (this.state.cards.length - index <= CARD_REFRESH_LIMIT + 1) {
+      console.log(`There are only ${this.state.cards.length - index - 1} cards left.`);
+ 
+      if (!this.state.outOfCards) {
+        console.log(`Adding ${cards2.length} more cards`)
+ 
+        this.setState({
+          cards: this.state.cards.concat(cards2),
+          outOfCards: true
+        })
+      }
+ 
+    }
+ 
+  }
+ 
+  render() {
+    return (
+      <SwipeCards
+        cards={this.state.cards}
+        loop={false}
+ 
+        renderCard={(cardData) => <Card {...cardData} />}
+        renderNoMoreCards={() => <NoMoreCards />}
+        showYup={true}
+        showNope={true}
+ 
+        handleYup={this.handleYup}
+        handleNope={this.handleNope}
+        cardRemoved={this.cardRemoved.bind(this)}
+      />
+    )
+  }
+}
+ 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#F5FCFF"
-  },
   card: {
-    flex: 1,
-    borderRadius: 4,
-    borderWidth: 2,
-    borderColor: "#E8E8E8",
-    justifyContent: "center",
-    backgroundColor: "white"
+    alignItems: 'center',
+    borderRadius: 5,
+    overflow: 'hidden',
+    borderColor: 'grey',
+    backgroundColor: 'white',
+    borderWidth: 1,
+    elevation: 1,
+  },
+  thumbnail: {
+    width: 300,
+    height: 300,
   },
   text: {
-    textAlign: "center",
-    fontSize: 50,
-    backgroundColor: "transparent"
+    fontSize: 20,
+    paddingTop: 10,
+    paddingBottom: 10
+  },
+  noMoreCards: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  contentContainer: {
+    paddingVertical: 20
   }
-});
-
-
-// make this component available to the app
-export default HomeScreen
+})
