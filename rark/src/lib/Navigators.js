@@ -11,6 +11,7 @@ import NotificationsScreen from '../screens/app/NotificationsScreen'
 import ProfileScreen from '../screens/app/ProfileScreen'
 import hideTabBar from './HideTabBar'
 import { createMaterialTopTabNavigator } from 'react-navigation';
+import {StyleSheet} from 'react-native';
 
 const AuthStack = createStackNavigator({
   GetStarted: GetStartedScreen,
@@ -42,30 +43,15 @@ const AppTab = createMaterialTopTabNavigator(
   {
     Profile: {
       screen: ProfileStack,
-      tabBarOptions: {
-        tabBarIcon: <Icon name='account-circle' size={25} />,
-        tabBarLabel: 'Profile',
-        tabBarColor: '#26c6da',
-        shifting: true
-      },
+
     },
     Home: {
       screen: HomeStack,
-      tabBarOptions: {
-        tabBarIcon: <Icon name='people' size={25} />,
-        tabBarLabel: 'Chores',
-        tabBarColor: 'black',
-        shifting: true
-      }
+ 
     },
     Flat: {
       screen: FlatStack,
-            tabBarOptions: {
-        tabBarIcon: <Icon name='weekend' size={25} />,
-        tabBarLabel: 'Your Flat',
-        tabBarColor: '#80deea',
-        shifting: true
-      }
+
     },
   },
   {
@@ -74,7 +60,11 @@ const AppTab = createMaterialTopTabNavigator(
   },
 
 );
-
+const styles = StyleSheet.create({
+  icon:{
+   
+  }
+});
 export {
   AuthStack,
   HomeStack,

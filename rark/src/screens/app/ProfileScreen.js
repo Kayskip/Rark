@@ -4,6 +4,7 @@ import { View, Text, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { Button } from 'react-native-elements';
 import { createStackNavigator } from 'react-navigation'
+import Header from 'src\screens\app\Header.js';
 
 // create a component
 class ProfileScreen extends Component {
@@ -15,7 +16,7 @@ class ProfileScreen extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View> style={styles.container}>
         <Button
           onPress={() => this.props.navigation.navigate("CreateEventScreen")}
           buttonStyle={styles.buttonStyle}
@@ -33,8 +34,7 @@ class ProfileScreen extends Component {
           accessibilityLabel="Join an existing party using the flatID!"
         />
       </View>
-    );
-  }
+    )};
 }
 
 // define your styles
@@ -62,6 +62,7 @@ const styles = StyleSheet.create({
     color: '#ffffff',
     textAlign: 'center'
   },
+  
 });
 
 // make this component available to the app
