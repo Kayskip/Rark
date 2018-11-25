@@ -19,38 +19,20 @@ const AuthStack = createStackNavigator({
   Signup: SignupScreen
 })
 
-const HomeStack = createStackNavigator({
-  HomeNav: HomeScreen,
-})
-HomeStack.navigationOptions = hideTabBar
-
-const FlatStack = createStackNavigator({
-  Flat: FlatScreen
-})
-
-FlatStack.navigationOptions = hideTabBar
-
-const ProfileStack = createStackNavigator({
-  ProfileNav: ProfileScreen,
-  Notifications: NotificationsScreen,
-  Profile: ProfileScreen
-})
-
-ProfileScreen.navigationOptions = hideTabBar
 
 
 const AppTab = createMaterialTopTabNavigator(
   {
     Profile: {
-      screen: ProfileStack,
+      screen: ProfileScreen,
 
     },
     Home: {
-      screen: HomeStack,
+      screen: HomeScreen,
  
     },
     Flat: {
-      screen: FlatStack,
+      screen: FlatScreen,
 
     },
   },
@@ -67,8 +49,5 @@ const styles = StyleSheet.create({
 });
 export {
   AuthStack,
-  HomeStack,
-  FlatStack,
-  ProfileStack,
   AppTab
 }
