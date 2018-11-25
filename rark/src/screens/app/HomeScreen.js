@@ -3,38 +3,62 @@ import React, { Component } from 'react'
 import { View, Text, StyleSheet, Button, TouchableOpacity, ScrollView, RefreshControl } from 'react-native'
 import firebase from 'react-native-firebase'
 import Icon from 'react-native-vector-icons/MaterialIcons'
+import Swiper from 'react-native-deck-swiper'
 
 class HomeScreen extends Component {
   constructor(props) {
     super(props)
     this.state = {}}
 
-  render() {
-    return (
-      <ScrollView>
-      </ScrollView>
-    )
+    render () {
+      return (
+      <View style={styles.container}>
+          <Swiper
+              cards={['DO', 'MORE', 'OF', 'WHAT', 'MAKES', 'YOU', 'HAPPY']}
+              renderCard={(card) => {
+                  return (
+                      <View style={styles.card}>
+                          <Text style={styles.text}>{card}</Text>
+                      </View>
+                  )
+              }}
+              onSwiped={(cardIndex) => {console.log(cardIndex)}}
+              onSwipedAll={() => {console.log('onSwipedAll')}}
+              cardIndex={0}
+              backgroundColor={'#4FD0E9'}
+              stackSize= {3}>
+              <Button
+                  onPress={() => {console.log('oulala')}}
+                  title="Press me">
+                  You can press me
+              </Button>
+          </Swiper>
+      </View>
+      )
   }
 }
 
-// define your styles
+
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#00c2cc'
+    flex: 1,
+    backgroundColor: "#F5FCFF"
   },
-  addChoreCont: {
-    flexGrow: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 24,
-    flexDirection: 'column'
+  card: {
+    flex: 1,
+    borderRadius: 4,
+    borderWidth: 2,
+    borderColor: "#E8E8E8",
+    justifyContent: "center",
+    backgroundColor: "white"
   },
-  addChoreText: {
-    color: '#ffffff',
-    fontSize: 16,
-    paddingBottom: 15
+  text: {
+    textAlign: "center",
+    fontSize: 50,
+    backgroundColor: "transparent"
   }
-})
+});
+
 
 // make this component available to the app
 export default HomeScreen
