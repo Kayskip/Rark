@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { View, Text, StyleSheet, Button, TouchableOpacity } from 'react-native'
 import LoginForm from '../../components/LoginForm'
 import Logo from '../../components/Logo'
+
 // create a component
 class LoginScreen extends Component {
   static navigationOptions = { header: null }

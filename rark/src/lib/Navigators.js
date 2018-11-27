@@ -19,8 +19,6 @@ const AuthStack = createStackNavigator({
   Signup: SignupScreen
 })
 
-
-
 const AppTab = createMaterialTopTabNavigator(
   {
     Profile: {

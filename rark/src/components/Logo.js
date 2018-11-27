@@ -1,12 +1,11 @@
 import React from 'react'
 import { StyleSheet, Text, View, Image } from 'react-native'
-
+import Icon from 'react-native-vector-icons/FontAwesome';
 export default class Logo extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Image style={{ width: 120, height: 120 }}
-          source={{ uri: 'https://i.imgur.com/KyBlg4b.png' }} />
+        <Icon name="hand-peace-o" size={70} color="white"></Icon>
         <Text style={styles.logoText}>Welcome to on the Rark.</Text>
       </View>
     )
@@ -22,6 +21,7 @@ const styles = StyleSheet.create({
   logoText: {
     marginVertical: 15,
     fontSize: 18,
-    color: 'rgba(255,255,255,0.7)'
-  }
+    color: 'white'
+  },
+
 })

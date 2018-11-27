@@ -2,7 +2,7 @@
  
 import React from 'react';
 import {StyleSheet, Text, View, Image, ScrollView} from 'react-native';
- 
+import { Button } from 'react-native-elements';
 import SwipeCards from 'react-native-swipe-cards';
  
 class Card extends React.Component {
@@ -12,14 +12,10 @@ class Card extends React.Component {
  
   render() {
     return (
-
-      <ScrollView contentContainerStyle={styles.contentContainer}>
         <View style={styles.card}>
           <Image style={styles.thumbnail} source={{uri: this.props.image}} />
           <Text style={styles.text}>This is card {this.props.name}</Text>
         </View>
-      </ScrollView>
-
     )
   }
 }
@@ -97,19 +93,50 @@ export default class HomeScreen extends React.Component {
  
   render() {
     return (
-      <SwipeCards
-        cards={this.state.cards}
-        loop={false}
+      <ScrollView contentContainerStyle={styles.contentContainer}>
+      <View style={styles.buttonContainer}>
+       
+          <Button
+            // onPress={() => this.props.navigation.navigate("CreateFlat")}
+            titleStyle={styles.buttonText}
+            buttonStyle={styles.buttonStyle}
+            title="Individuals"
+            color="#ffffff"
+          />
+  
+          <Button
+              // onPress={() => this.props.navigation.navigate("CreateFlat")}
+              titleStyle={styles.buttonText}
+              buttonStyle={styles.buttonStyle}
+              title="   Groups   "
+              color="#ffffff"
+            />
+        
+          <Button
+              // onPress={() => this.props.navigation.navigate("CreateFlat")}
+              titleStyle={styles.buttonText}
+              buttonStyle={styles.buttonStyle}
+              title="    Events   "
+              color="#ffffff"
+            />
+    
+       </View>
+
+       <View style={styles.swipeContainer}>
+          <SwipeCards
+            cards={this.state.cards}
+            loop={false}
  
-        renderCard={(cardData) => <Card {...cardData} />}
-        renderNoMoreCards={() => <NoMoreCards />}
-        showYup={true}
-        showNope={true}
- 
-        handleYup={this.handleYup}
-        handleNope={this.handleNope}
-        cardRemoved={this.cardRemoved.bind(this)}
-      />
+            renderCard={(cardData) => <Card {...cardData} />}
+            renderNoMoreCards={() => <NoMoreCards />}
+            showYup={true}
+            showNope={true} 
+            handleYup={this.handleYup}
+            handleNope={this.handleNope}
+            cardRemoved={this.cardRemoved.bind(this)}
+          />
+      </View>
+      </ScrollView>
     )
   }
 }
@@ -140,5 +167,32 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     paddingVertical: 20
+  },
+  buttonStyle: {
+    backgroundColor: "#00FF00",
+    width: 110,
+    height: 35,
+    margin: 1,
+    borderColor: "transparent",
+    borderWidth: 0,
+    borderRadius: 8,
+    
+  },
+  buttonText: {
+    width: 100,
+    fontSize: 15,
+    fontWeight: '500',
+    color: '#ffffff',
+    textAlign: 'center'
+  },
+  buttonContainer: {
+    flexDirection: "row",
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  swipeContainer: {
+    paddingVertical: 20
   }
+ 
+
 })
