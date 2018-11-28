@@ -1,36 +1,33 @@
 // import liraries
 import React, { Component } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
-import { Button } from 'react-native-elements';
-import { createStackNavigator } from 'react-navigation'
+import { Button } from "react-native-elements";
+import { createStackNavigator } from "react-navigation";
 
 // create a component
 class FlatScreen extends Component {
-
   static navigationOptions = {
-    title: 'CREATE A FLAT'
-  }
+    title: "CREATE A FLAT"
+  };
 
   render() {
     return (
       <View style={styles.container}>
-        <Button
-          onPress={() => this.props.navigation.navigate("CreateFlat")}
-          titleStyle={styles.buttonText}
-          buttonStyle={styles.buttonStyle}
-          title="Create a Flat!"
-          color="#ffffff"
-          accessibilityLabel="Create chores and put your flatmates to work!"
-        />
-        <Button
-          buttonStyle={styles.buttonStyle}
-          titleStyle={styles.buttonText}
-          onPress={() => this.props.navigation.navigate("JoinFlat")}
-          title="Join a Flat!"
-          color="#ffffff"
-          accessibilityLabel="Join an existing flat using the flatID!"
-        />
+        <TouchableOpacity
+          style={{
+            borderWidth: 1,
+            borderColor: "rgba(0,0,0,0.2)",
+            alignItems: "center",
+            justifyContent: "center",
+            width: 100,
+            height: 100,
+            backgroundColor: "#fff",
+            borderRadius: 100
+          }}
+        >
+          <Icon name={"chevron-right"} size={30} color="#01a699" />
+        </TouchableOpacity>
       </View>
     );
   }
@@ -51,16 +48,15 @@ const styles = StyleSheet.create({
     margin: 10,
     borderColor: "transparent",
     borderWidth: 0,
-    borderRadius: 10,
-    
+    borderRadius: 10
   },
   buttonText: {
     width: 300,
     fontSize: 20,
-    fontWeight: '500',
-    color: '#ffffff',
-    textAlign: 'center'
-  },
+    fontWeight: "500",
+    color: "#ffffff",
+    textAlign: "center"
+  }
 });
 
 // make this component available to the app

@@ -1,19 +1,33 @@
 "use strict";
 
 import React from "react";
-import { StyleSheet, Text, View, Image, ScrollView } from "react-native";
-import { Button, ButtonGroup } from "react-native-elements";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  ScrollView,
+  TouchableOpacity
+} from "react-native";
+import { Button, ButtonGroup, Slider } from "react-native-elements";
 import SwipeCards from "react-native-swipe-cards";
-import Icon from "react-native-vector-icons/FontAwesome";
+import Icon from "react-native-vector-icons/AntDesign";
+import CollapseView from "react-native-collapse-view";
+import ToggleSwitch from "toggle-switch-react-native";
+import { Dimensions } from "react-native";
 
 
 class Card extends React.Component {
   constructor() {
-    super()
+    super();
     this.state = {
-      selectedIndex: 2
-    }
+      selectedIndex: 2,
+      isOnDefaultToggleSwitch: true,
+      isOnLargeToggleSwitch: false,
+      isOnBlueToggleSwitch: false
+    };
   }
+  
 
   render() {
     return (
@@ -81,8 +95,8 @@ export default class HomeScreen extends React.Component {
     console.log("nope");
   }
 
-  updateIndex (selectedIndex) {
-    this.setState({selectedIndex})
+  updateIndex(selectedIndex) {
+    this.setState({ selectedIndex });
   }
 
   cardRemoved(index) {
@@ -105,36 +119,96 @@ export default class HomeScreen extends React.Component {
       }
     }
   }
+  onToggle(isOn) {
+    alert("Changed to " + isOn);
+  }
+
+  _renderCollapseView = collapse => {
+    return (
+      <View style={styles.collapseView}>
+        <View style={styles.buttonContainer}>
+          <ToggleSwitch
+            label="Individuals"
+            onColor="#2196F3"
+            isOn={this.state.isOnBlueToggleSwitch}
+            onToggle={isOnBlueToggleSwitch => {
+              this.setState({ isOnBlueToggleSwitch });
+              this.onToggle(isOnBlueToggleSwitch);
+            }}
+          />
+
+          <ToggleSwitch
+            label="Groups"
+            onColor="#2196F3"
+            isOn={this.state.isOnBlueToggleSwitch}
+            onToggle={isOnBlueToggleSwitch => {
+              this.setState({ isOnBlueToggleSwitch });
+              this.onToggle(isOnBlueToggleSwitch);
+            }}
+          />
+
+          <ToggleSwitch
+            label="Events"
+            onColor="#2196F3"
+            isOn={this.state.isOnBlueToggleSwitch}
+            onToggle={isOnBlueToggleSwitch => {
+              this.setState({ isOnBlueToggleSwitch });
+              this.onToggle(isOnBlueToggleSwitch);
+            }}
+          />
+        </View>
+        <View style={styles.buttonContainer}>
+          <View
+            style={{ flex: 1, alignItems: "stretch", justifyContent: "center" }}
+          >
+            <Slider
+              value={this.state.value}
+              onValueChange={value => this.setState({ value })}
+            />
+            <Text>Proximity (km): {this.state.value}</Text>
+          </View>
+        </View>
+      </View>
+    );
+  };
+
+  _renderView = collapse => {
+    return (
+      this.returnToggleButton(collapse)
+    );
+  };
+
+  returnToggleButton(collapse) {
+    if (collapse) {
+      return (
+        <View style={styles.view}>
+          <Icon
+            name="up"
+            color="#517fa4"
+          />
+        </View>
+      );
+    } else {
+      return (
+        <View style={styles.view}>
+          <Icon
+            name="down"
+            color="#517fa4"
+          />
+        </View>
+      );
+    }
+  }
 
   render() {
     const buttons = ["Hello", "World", "Buttons"];
     const { selectedIndex } = this.state;
-
     return (
       <ScrollView contentContainerStyle={styles.contentContainer}>
-        <View style={styles.buttonContainer}>
-          <Button
-            // onPress={() => this.props.navigation.navigate("CreateFlat")}
-            titleStyle={styles.buttonText}
-            buttonStyle={styles.buttonStyle}
-            title="Individuals"
-            color="#ffffff"
-          />
-
-          <Button
-            // onPress={() => this.props.navigation.navigate("CreateFlat")}
-            titleStyle={styles.buttonText}
-            buttonStyle={styles.buttonStyle}
-            title="   Groups   "
-            color="#ffffff"
-          />
-
-          <Button
-            // onPress={() => this.props.navigation.navigate("CreateFlat")}
-            titleStyle={styles.buttonText}
-            buttonStyle={styles.buttonStyle}
-            title="    Events   "
-            color="#ffffff"
+        <View>
+          <CollapseView
+            renderView={this._renderView}
+            renderCollapseView={this._renderCollapseView}
           />
         </View>
 
@@ -151,21 +225,10 @@ export default class HomeScreen extends React.Component {
             cardRemoved={this.cardRemoved.bind(this)}
           />
         </View>
-
-        <View style={styles.buttonContainer}>
-          <ButtonGroup
-            onPress={this.updateIndex}
-            selectedIndex={selectedIndex}
-            buttons={buttons}
-            containerStyle={{ height: 100 }}
-          />
-        </View>
       </ScrollView>
     );
   }
 }
-
-
 
 const styles = StyleSheet.create({
   card: {
@@ -178,8 +241,9 @@ const styles = StyleSheet.create({
     elevation: 1
   },
   thumbnail: {
-    width: 380,
-    height: 330
+    alignItems: "center",
+    width: Dimensions.get('window').width*0.95,
+    height: Dimensions.get('window').height*0.7
   },
   text: {
     fontSize: 20,
@@ -192,30 +256,30 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   contentContainer: {
-    paddingVertical: 20
-  },
-  buttonStyle: {
-    backgroundColor: "#00FF00",
-    width: 110,
-    height: 35,
-    margin: 1,
-    borderColor: "transparent",
-    borderWidth: 0,
-    borderRadius: 8
-  },
-  buttonText: {
-    width: 100,
-    fontSize: 15,
-    fontWeight: "500",
-    color: "#ffffff",
-    textAlign: "center"
+    paddingVertical: 0
   },
   buttonContainer: {
     flexDirection: "row",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    height: 100
   },
   swipeContainer: {
     paddingVertical: 20
+  },
+  view: {
+    height: 50,
+    padding: 20,
+    alignSelf: 'flex-end',
+    backgroundColor: "#ffffff"
+  },
+  collapseView: {
+    padding: 20
+  },
+  buttonLeft: {
+    paddingRight: 50
+  },
+  buttonRight: {
+    paddingLeft: 50
   }
 });
