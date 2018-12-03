@@ -102,7 +102,7 @@ def enableProguardInReleaseBuilds = false
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+    
 
     defaultConfig {
         applicationId "com.rark"
@@ -168,6 +168,6 @@ task copyDownloadableDepsToLibs(type: Copy) {
     into 'libs'
 }
 
-apply plugin: 'com.google.gms.google-services'
+
 
 com.google.gms.googleservices.GoogleServicesPlugin.config.disableVersionCheck = true

@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
   logoText: {
     marginVertical: 15,
     fontSize: 18,
-    color: 'rgba(255,255,255,0.7)'
-  }
+    color: 'white'
+  },
+
 })
