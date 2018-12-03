@@ -87,19 +87,19 @@ const styles = StyleSheet.create({
 
     inputBox: {
         width: 300,
-        backgroundColor: 'rgba(255,255,255,0.2)',
+        backgroundColor: '#cecfcc',
         borderRadius: 10,
         paddingHorizontal: 16,
         paddingVertical: 12,
         fontSize: 16,
-        color: '#ffffff',
+        color: 'black',
         marginVertical: 6,
 
     },
 
     button: {
         width: 300,
-        backgroundColor: '#ffa18a',
+        backgroundColor: '#00c2cc',
         borderRadius: 10,
         paddingVertical: 12,
         marginVertical: 6,
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
         width: 300,
         fontSize: 20,
         fontWeight: '500',
-        color: '#ffffff',
+        color: 'black',
         textAlign: 'center'
     },
 

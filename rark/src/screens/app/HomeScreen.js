@@ -125,7 +125,7 @@ export default class HomeScreen extends React.Component {
 
   _renderCollapseView = collapse => {
     return (
-      <View style={styles.collapseView}>
+      <View >
         <View style={styles.buttonContainer}>
           <ToggleSwitch
             label="Individuals"
@@ -157,9 +157,9 @@ export default class HomeScreen extends React.Component {
             }}
           />
         </View>
-        <View style={styles.buttonContainer}>
+        <View style={styles.sliderContainer}>
           <View
-            style={{ flex: 1, alignItems: "stretch", justifyContent: "center" }}
+            style={{ flex: 1, alignItems: "stretch", justifyContent: "center", }}
           >
             <Slider
               value={this.state.value}
@@ -181,18 +181,19 @@ export default class HomeScreen extends React.Component {
   returnToggleButton(collapse) {
     if (collapse) {
       return (
-        <View style={styles.view}>
-          <Icon
-            name="up"
+        <View>
+          <Icon style={styles.view}
+            name="down"
             color="#517fa4"
           />
+          <Text style = {styles.settingsTitle}>Quick Settings</Text>
         </View>
       );
     } else {
       return (
         <View style={styles.view}>
           <Icon
-            name="down"
+            name="up"
             color="#517fa4"
           />
         </View>
@@ -262,7 +263,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    height: 100
+    height: Dimensions.get('window').height*0.1
   },
   swipeContainer: {
     paddingVertical: 20
@@ -273,13 +274,21 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end',
     backgroundColor: "#ffffff"
   },
-  collapseView: {
-    padding: 20
+  settingsTitle:{
+    textAlign:'center'
   },
   buttonLeft: {
     paddingRight: 50
   },
   buttonRight: {
     paddingLeft: 50
+  },
+  sliderContainer:{
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    height: Dimensions.get('window').height*0.3,
+    marginTop:0,
+    paddingTop:0
   }
 });

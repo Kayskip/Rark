@@ -8,7 +8,7 @@ import SignupForm from '../../components/SignupForm'
 // create a component
 class SignupScreen extends Component {
 
-
+  static navigationOptions = { header: null }
 
   state = { email: '', password: '', errorMessage: null, loading: false }
   render() {
@@ -31,7 +31,7 @@ class SignupScreen extends Component {
 // define your styles
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#00c2cc',
+    backgroundColor: '#ffffff',
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center'
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     fontSize: 16
   },
   signupButton: {
-    color: '#ffffff',
+    color: '#00c2cc',
     fontSize: 16,
     fontWeight: '700'
   }

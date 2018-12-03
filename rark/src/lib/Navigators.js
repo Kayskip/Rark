@@ -38,15 +38,12 @@ const AppTab = createMaterialTopTabNavigator(
   },
   {
     initialRouteName: 'Home',
-    barStyle: { backgroundColor: '#1c313a' }
+    barStyle: { backgroundColor: '#00c2cc' ,activeTintColor: '#F8F8F8',
+    inactiveTintColor: '#586589'}
   },
 
 );
-const styles = StyleSheet.create({
-  icon:{
-   
-  }
-});
+
 export {
   AuthStack,
   AppTab

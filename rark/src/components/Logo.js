@@ -1,12 +1,14 @@
 import React from 'react'
 import { StyleSheet, Text, View, Image } from 'react-native'
 
+import logo from '../Images/logo.png'
+
 export default class Logo extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Image style={{ width: 120, height: 120 }}
-          source={{ uri: 'https://i.imgur.com/KyBlg4b.png' }} />
+        <Image style={{ width: 120, height: 120, borderRadius:15 }}
+          source={logo} />
         <Text style={styles.logoText}>Welcome to on the Rark.</Text>
       </View>
     )
