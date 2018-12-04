@@ -34,18 +34,18 @@ class SignupForm extends React.Component {
                     loading={this.state.loading} />
                 <TextInput style={styles.inputBox}
                     placeholder="Name"
-                    placeholderTextColor='#ffffff'
+                    placeholderTextColor='grey'
                 />
                 <TextInput style={styles.inputBox}
                     placeholder="Email"
                     onChangeText={email => this.setState({ email })}
                     autoCapitalize='none'
-                    placeholderTextColor='#ffffff'
+                    placeholderTextColor='grey'
                     value={this.state.email}
                 />
                 <TextInput style={styles.inputBox}
                     placeholder="Password"
-                    placeholderTextColor='#ffffff'
+                    placeholderTextColor='grey'
                     autoCapitalize='none'
                     onChangeText={password => this.setState({ password })}
                     secureTextEntry={true}
@@ -53,7 +53,7 @@ class SignupForm extends React.Component {
                 />
                 <TextInput style={styles.inputBox}
                     placeholder="Re-enter Password"
-                    placeholderTextColor='#ffffff'
+                    placeholderTextColor='grey'
                     autoCapitalize='none'
                     onChangeText={confirmPassword => this.setState({ confirmPassword })}
                     secureTextEntry={true}

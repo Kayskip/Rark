@@ -5,75 +5,90 @@ import {
   Text,
   StyleSheet,
   Image,
-  Button
+  Button,
+  TouchableOpacity,
 } from "react-native";
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 // create a component
 class ProfileScreen extends Component {
+  static navigationOptions = {
+    
+    tabBarIcon:() => <Icon size={ 20 } name={ 'person' } />
+  };
+  
   render() {
     return (
-      <View>
+      <View style ={styles.container}>
 
-       <View style ={styles.profilepicWrap}>
+       <View style ={styles.profilepic}>
        <Image style = {styles.profilepic} source = {require('../../Images/empty-profile.png')}></Image>
        </View>
        <Text style={styles.name}>JOHN</Text>
-       <View style= {styles.iconWrap}><Icon name="star-o" size={40} color="gold"></Icon>
-       <Icon name="star-o" size={40} color="gold"></Icon>
-       <Icon name="star-o" size={40} color="gold"></Icon>
-       <Icon name="star-o" size={40} color="gold"></Icon>
-       <Icon name="star-half-full" size={40} color="gold"></Icon>
+       <View style= {styles.star}><Text>4.5</Text><Icon name="star"  size={20} color="grey"></Icon></View>
+
+      
+       <View style={styles.icons}>
+       
+       <Icon style={styles.cog} name="cog" size={20} ></Icon>
+       
+       <Icon style={styles.pencil} name="pencil" size={20} ></Icon>
+
        </View>
-       <Button
-          onPress={() => this.props.navigation.navigate("Edit Profile")}
-          titleStyle={styles.buttonText}
-          buttonStyle={styles.buttonStyle}
-          title="Edit Profile"
-          accessibilityLabel="Edit your profile!"
-        />
-      </View>
+       <TouchableOpacity style={styles.buttonStyle}
+          onPress={() => this.props.navigation.navigate("Profile")}
+          />
+        <TouchableOpacity
+          style={styles.buttonStyle}
+          onPress={() => this.props.navigation.navigate("Profile")}
+          />
+        </View>
+
     )};
 }
 const styles = StyleSheet.create({
-  profilepic: {
-    flex:1,
-    width:null,
-    alignSelf:'stretch',
-    borderRadius: 100,
-    borderColor:'#fff',
-    borderWidth:4
-  },
-  iconWrap:{
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  profilepicWrap:{
-    width: 140,
-    height: 140,
-    borderRadius:100,
-    alignItems:'center',
-  },
-  name:{
-    marginLeft:160
-  },
-  rating:{
-    marginLeft:150
-  },
-  buttonStyle: {
-    backgroundColor: "orange",
-    width: 320,
-    height: 45,
-    margin: 10,
-    borderWidth: 0,
-    borderRadius: 10,
-  },
-  buttonText: {
+  buttonStyle:{
     width: 300,
-    fontSize: 20,
-    fontWeight: '500',
-    textAlign: 'center'
+    backgroundColor: "#00c2cc",
+    borderRadius: 10,
+    paddingVertical: 12,
+    marginVertical: 6
+  },
+
+  profilepic:{
+    borderWidth:1,
+    borderColor:'rgba(0,0,0,0.2)',
+    alignItems:'center',
+    justifyContent:'center',
+    width:100,
+    height:100,
+    backgroundColor:'#fff',
+    borderRadius:120,
+  },
+  icons:{
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    flexDirection: 'row',
+    
+  },
+  star:{
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    flexDirection: 'row',
+  },
+  cog:{
+   paddingRight:130,
+   paddingBottom:100,
+  },
+  pencil:{
+    paddingLeft:130,
+    paddingBottom:100,
+  },
+  container:{
+    backgroundColor:'white',
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
 });
 

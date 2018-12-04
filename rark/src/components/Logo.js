@@ -9,7 +9,7 @@ export default class Logo extends React.Component {
       <View style={styles.container}>
         <Image style={{ width: 120, height: 120, borderRadius:15 }}
           source={logo} />
-        <Text style={styles.logoText}>Welcome to on the Rark.</Text>
+        <Text style={styles.logoText}>Welcome to the Rark</Text>
       </View>
     )
   }
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   logoText: {
     marginVertical: 15,
     fontSize: 18,
-    color: 'white'
+    color: 'grey'
   },
 
 })

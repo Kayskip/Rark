@@ -10,13 +10,12 @@ class SignupScreen extends Component {
 
   static navigationOptions = { header: null }
 
-  state = { email: '', password: '', errorMessage: null, loading: false }
   render() {
     return (
       <View style={styles.container}>
         <SignupForm type='Signup' />
         <View style={styles.signupTextCont}>
-          <Text style={styles.signupText}>Already Have an account?</Text>
+          <Text style={styles.signupText}>Already have an account?</Text>
           <TouchableOpacity
             onPress={() => this.props.navigation.navigate('Login')}
           >
@@ -41,10 +40,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-end',
     paddingVertical: 16,
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   signupText: {
-    color: 'rgba(255,255,255,0.6)',
+    color: 'grey',
     fontSize: 16
   },
   signupButton: {

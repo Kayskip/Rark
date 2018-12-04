@@ -21,8 +21,8 @@ class GetStartedScreen extends Component {
         <Gif />
         <TouchableOpacity
           style={styles.button}
-          onPress={() => this.props.navigation.navigate("Login")}
-        >
+          onPress={() => this.props.navigation.navigate("Profile")}
+>
           <Text style={styles.buttonText}>Get Started</Text>
         </TouchableOpacity>
       </View>

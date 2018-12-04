@@ -5,10 +5,11 @@ import Icon from "react-native-vector-icons/MaterialIcons";
 import { Button } from "react-native-elements";
 import { createStackNavigator } from "react-navigation";
 
+
 // create a component
 class FlatScreen extends Component {
   static navigationOptions = {
-    title: "CREATE A FLAT"
+    tabBarIcon:() => <Icon size={ 20 } name={ 'person' } />
   };
 
   render() {

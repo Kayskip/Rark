@@ -13,7 +13,7 @@
     "react": "16.6.1",
     "react-native": "0.57.5",
     "react-native-collapse-view": "^1.0.0",
-    "react-native-deck-swiper": "^1.5.25",
+    "react-native-deck-swiper": "^1.5.26",
     "react-native-easy-toast": "^1.1.0",
     "react-native-elements": "^0.19.1",
     "react-native-email": "^1.0.2",

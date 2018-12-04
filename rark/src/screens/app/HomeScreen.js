@@ -17,7 +17,9 @@ import ToggleSwitch from "toggle-switch-react-native";
 import { Dimensions } from "react-native";
 
 
+
 class Card extends React.Component {
+  
   constructor() {
     super();
     this.state = {
@@ -79,6 +81,10 @@ const cards2 = [
 ];
 
 export default class HomeScreen extends React.Component {
+  static navigationOptions = {
+    
+    tabBarIcon:() => <Icon size={ 20 } name={ 'cog' } />
+  };
   constructor(props) {
     super(props);
     this.state = {

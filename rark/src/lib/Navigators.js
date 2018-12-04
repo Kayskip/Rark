@@ -27,7 +27,8 @@ const AppTab = createMaterialTopTabNavigator(
     },
     Home: {
       screen: HomeScreen,
- 
+      
+        
     },
     Flat: {
       screen: FlatScreen,
@@ -37,7 +38,14 @@ const AppTab = createMaterialTopTabNavigator(
   {
     initialRouteName: 'Home',
     barStyle: { backgroundColor: '#00c2cc' ,activeTintColor: '#F8F8F8',
-    inactiveTintColor: '#586589'}
+    inactiveTintColor: '#586589'},
+    tabBarOptions: { 
+      showIcon: true,
+      showLabel: false
+    }, 
+    style:{
+      backgroundColor:'#00c2cc',
+    },
   },
 
 );

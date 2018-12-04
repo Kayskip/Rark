@@ -39,10 +39,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-end',
     paddingVertical: 16,
-    flexDirection: 'row'
+    flexDirection: 'row',
+  
   },
   signupText: {
-    color: 'rgba(255,255,255,0.6)',
+    color: 'grey',
     fontSize: 16
   },
   signupButton: {

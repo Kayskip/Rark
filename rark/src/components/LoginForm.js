@@ -69,7 +69,7 @@ class LoginForm extends Component {
           fadeInDuration={50}
           fadeOutDuration={300}
           opacity={1}
-          textStyle={{ color: 'white' }}
+          textStyle={{ color: 'grey' }}
         />
       </View>
     )
