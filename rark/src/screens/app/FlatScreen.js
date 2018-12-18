@@ -9,7 +9,7 @@ import { createStackNavigator } from "react-navigation";
 // create a component
 class FlatScreen extends Component {
   static navigationOptions = {
-    tabBarIcon:() => <Icon size={ 20 } name={ 'person' } />
+    tabBarIcon:() => <Icon size={ 20 } name={ 'notifications-none' } />
   };
 
   render() {

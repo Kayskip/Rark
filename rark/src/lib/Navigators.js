@@ -23,16 +23,12 @@ const AppTab = createMaterialTopTabNavigator(
   {
     Profile: {
       screen: ProfileScreen,
-
     },
     Home: {
       screen: HomeScreen,
-      
-        
     },
     Flat: {
       screen: FlatScreen,
-
     },
   },
   {
@@ -43,11 +39,7 @@ const AppTab = createMaterialTopTabNavigator(
       showIcon: true,
       showLabel: false
     }, 
-    style:{
-      backgroundColor:'#00c2cc',
-    },
   },
-
 );
 
 export {

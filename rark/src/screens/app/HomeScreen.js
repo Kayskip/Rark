@@ -83,7 +83,7 @@ const cards2 = [
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
     
-    tabBarIcon:() => <Icon size={ 20 } name={ 'cog' } />
+    tabBarIcon:() => <Icon size={ 20 } name={ 'home' } />
   };
   constructor(props) {
     super(props);

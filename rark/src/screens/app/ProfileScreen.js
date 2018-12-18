@@ -13,8 +13,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 // create a component
 class ProfileScreen extends Component {
   static navigationOptions = {
-    
-    tabBarIcon:() => <Icon size={ 20 } name={ 'person' } />
+    tabBarIcon:() => <Icon size={ 20 } name={ 'face' } />
   };
   
   render() {
@@ -30,9 +29,9 @@ class ProfileScreen extends Component {
       
        <View style={styles.icons}>
        
-       <Icon style={styles.cog} name="cog" size={20} ></Icon>
+       <Icon style={styles.cog} name="face" size={20} ></Icon>
        
-       <Icon style={styles.pencil} name="pencil" size={20} ></Icon>
+       <Icon style={styles.pencil} name="face" size={20} ></Icon>
 
        </View>
        <TouchableOpacity style={styles.buttonStyle}
