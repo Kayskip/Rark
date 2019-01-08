@@ -165,7 +165,7 @@ export default class HomeScreen extends React.Component {
         </View>
         <View style={styles.sliderContainer}>
           <View
-            style={{ flex: 1, alignItems: "stretch", justifyContent: "center", }}
+            style={{ flex: 1, alignItems: "stretch", justifyContent: "center", marginBottom:100}}
           >
             <Slider
               value={this.state.value}
